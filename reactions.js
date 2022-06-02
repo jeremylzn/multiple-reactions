@@ -10,14 +10,29 @@ client.once('ready', () => {
 
 const prefix = config.prefix;
 client.on('message', message => {
+  
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
+
   const command = args.shift().toLowerCase();
+  console.log("command :", command)
+
+  console.log("message.author.id :", message.author.id)
+
+  console.log("client.user.id :", client.user.id)
+
+  console.log("message.content", message.content)
 
   // Stop the program if the message wasn't sent by us or isn't prefaced with configured prefix
   if (message.author.id !== client.user.id || message.content.indexOf(client.config.prefix) !== 0) return;
 
+  console.log("la :")
+
   let commandName = args[0];
+
+  console.log("commandName :", commandName)
+
   if (command === "set") {
+    console.log("in if command set")
       // Detects insufficient number of arguments
       if (args.length == 1)
         return console.log(`${prefix}set doesn't work that way! You need to include at least one reaction.`);
